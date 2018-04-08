@@ -56,16 +56,9 @@ void *thread_fun(void *pro)               //In each thread, this body of code ex
 {
 struct prog *p = (struct proc *) pro;
 
-printf("\n%d: Fetching pid...\n",p->number);
+printf("\n%d:Fetching pid\n",p->number);
 
 p->pid = allocate_pid();                               //fetching pid
-
-while(pid_check(p->pid)==1)                            //until pid is assigned, this loop will run.
-{
-  sleep(5);                                            //for every loop or again asking for pid, it sleeps for 5 secs.
-  printf("\n%d: Fetching pid...\n",p->number);
-  p->pid = allocate_pid();                             //trying to fetch pid once more.
-}
 display();
 
 p->sleep_time = sleeptime();                      //setting of sleep time for every process or thread.
